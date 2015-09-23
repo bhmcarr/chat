@@ -1,0 +1,37 @@
+Brandon Carr
+CSE 489
+Programming Assignment 1
+Documentation
+
+[---------------------COMPILING AND RUNNING-----------------------]
+1.) Unpack the tarball into the appropriate directory
+2.) Type "make" to compile using the makefile
+3.) You should be compiled at this point, if not, use command "gcc -o chat chat.c -std=gnu99"
+4.) To run, use "./chat" followed by "s" for server mode or "c" for client mode, followed by a port number
+
+[--------------------COMMANDS-------------------------------------]
+help - display a help screen
+
+myip - display own IP address
+
+myport - display current listening port
+
+register <server-ip> <server-port> -
+This will connect a client to a server specified by the ip and port given in the command. Upon registering, you will receive a list of all users currently registered with the server, along with their IPs and port numbers.
+
+connect <peer-ip> <port> -
+This will connect you to another client. A new TCP connection will be established between you, and that person's fd will be added to your own peer list. (accessed by LIST command)
+
+list -
+Displays a list of fds (sockets) that you can use with the SEND command. These are your connected peers. The first one is the server socket.
+
+send <fd> - 
+Opens a prompt that allows you to type a message to send through the specified socket.
+NOTE: If the message does not appear on the other end, try hitting ENTER on the receiving end. This is a bug that is caused from getline halting on stdin on the first iteration of the loop. After that it should be fine.
+
+terminate <fd> -
+closes the socket fd
+
+exit - 
+sends a signal to the server and exits the program
+
